@@ -1,7 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { DocumentQuotationComponent } from './pages/document-quotation/document-quotation.component';
+
+const routes: Routes = [
+  {
+    path:'',
+    component: DocumentQuotationComponent,
+    children: [
+      {path:'', redirectTo: 'document-quotation', pathMatch: 'full'}
+    ]
+  },
+  { path:'document-quotation', component: DocumentQuotationComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

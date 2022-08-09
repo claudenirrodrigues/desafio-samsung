@@ -1,0 +1,59 @@
+<form #formData="ngForm" (ngSubmit)="search(filter)">
+    <div class="p-fluid grid formgrid">
+      <div class="field col-12 md:col-4">
+        <h1>Search Criterias</h1>
+      </div>
+  
+      <div class="field col-12 md:col-4">
+        <label>Document Number:</label>
+        <input pInputText type="text" name="documentNumber" [(ngModel)]="filter.documentNumber">
+      </div>
+      <div class="field col-12 md:col-4">
+        <label>Currency:</label>
+        <p-dropdown [options]="currencies" placeholder="-- Selecione --"
+                    [(ngModel)]="filter.currencyCode" name="currencyCode" ></p-dropdown>
+      </div> 
+      <div class="field col-12 md:col-4">
+        <label for="afterDate">Document Date</label>
+        <p-calendar [(ngModel)]="filter.afterDate" [showIcon]="true" inputId="afterDate"></p-calendar>
+      </div>
+      <div class="field col-12 md:col-4">
+        <p-calendar [(ngModel)]="filter.beforeDate" [showIcon]="true" inputId="beforeDate"></p-calendar>
+      </div>
+      
+      <div class="col-6 md:col-6" align="right">
+        <button pButton label="Clear" type="button" class="p-button-sm custom-bt"(click)="clearForm(formData)"></button>
+        <button pButton label="Search" type="submit" class="p-button-sm custom-bt"></button>
+      </div>
+      <div class="col-6 md:col-6 p-fluid"></div>
+  
+      <div class="col-12 p-fluid">
+        <p-table responsiveLayout="stack" [paginator]="true" [rows]="5" [value]="documentsQuotations">
+          <ng-template pTemplate="header">
+            <tr>
+                <th>Document Number</th>
+                <th>Document Date</th>
+                <th>Currency Code</th>
+                <th>Currency Desc</th>
+                <th>Document Value</th>
+                <th>Value USD</th>
+                <th>Value PEN</th>
+                <th>Value BRL</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-documentQuotation>
+            <tr>
+              <td>{{documentQuotation.documentNumber}}</td>
+              <td>{{documentQuotation.documentDate}}</td>
+              <td>{{documentQuotation.currencyCode}} </td>
+              <td>{{documentQuotation.currencyDesc}}</td>
+              <td>{{documentQuotation.documentValue | number:'5.2'}}</td>
+              <td>{{documentQuotation.valueUSD | number:'5.2'}}</td>
+              <td>{{documentQuotation.valuePEN | number:'5.2'}}</td>
+              <td>{{documentQuotation.valueBRL | number:'5.2'}}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </form>
