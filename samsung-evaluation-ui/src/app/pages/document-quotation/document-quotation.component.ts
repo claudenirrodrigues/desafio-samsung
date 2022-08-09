@@ -41,7 +41,7 @@ export class DocumentQuotationComponent implements OnInit {
   loadCurrencies() {
     this.currencyService.findAll().subscribe((data: Currency[]) => {
       if (JSON.stringify(data) != 'null' && JSON.stringify(data) != '{}' && JSON.stringify(data) != '[]' && typeof JSON.stringify(data) != 'undefined') {
-          this.currencies = data.map( (c: Currency) => ({label: c.currencyCode, value: c.currencyDesc}) )
+          this.currencies = data.map( (c: Currency) => ({label: c.currencyDesc, value: c.currencyCode}) )
           console.log(this.currencies);
       }
     });
