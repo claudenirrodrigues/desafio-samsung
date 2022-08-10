@@ -5,14 +5,15 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.samsung.evaluation.api.dto.CurrencyDto;
 import com.samsung.evaluation.api.dto.DocumentQuotationDto;
+import com.samsung.evaluation.api.service.CurrencyService;
 import com.samsung.evaluation.api.service.DocumentQuotationService;
 
 @RestController
@@ -22,6 +23,8 @@ public class DocumentQuotationController {
 		@Autowired
 		private DocumentQuotationService documentQuotationService;
 		
+		@Autowired
+		private CurrencyService currencyService;
 		
 		@GetMapping
 	    public ResponseEntity<List<DocumentQuotationDto>> findAll() {
@@ -39,5 +42,11 @@ public class DocumentQuotationController {
 			List<DocumentQuotationDto> documents = documentQuotationService
 					.findByAnyCriteria(documentNumber, currencyCode, afterDate, beforeDate);
 	        return ResponseEntity.ok(documents);
+	    }
+		
+		@GetMapping("/currencies")
+	    public ResponseEntity<List<CurrencyDto>> findAllCurrencies() {
+	        List<CurrencyDto> currencies = currencyService.findAll();
+	        return ResponseEntity.ok(currencies);
 	    }
 }

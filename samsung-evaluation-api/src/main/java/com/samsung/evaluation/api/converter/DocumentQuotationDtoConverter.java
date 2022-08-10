@@ -1,6 +1,5 @@
 package com.samsung.evaluation.api.converter;
 
-import java.util.Date;
 
 import com.samsung.evaluation.api.dto.DocumentQuotationDto;
 import com.samsung.evaluation.api.model.Currency;
