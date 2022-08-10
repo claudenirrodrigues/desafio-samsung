@@ -1,37 +1,38 @@
 
 <div class="card">
-  <form #formData="ngForm" (ngSubmit)="search(filter)">
     <div class="container border-1 border-solid surface-border border-round ">
-      <h4>Shearch Criterias</h4>
-      <div class="formgrid grid">
-          <div class="field col-12 md:col-3">
-              <label for="documentNumber">Document Number</label>
-              <input pInputText type="text" id="documentNumber" name="documentNumber" [(ngModel)]="filter.documentNumber" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-          </div>
-          <div class="field col-12 md:col-3">
-              <label for="currencyCode">Currency</label>
-              <p-dropdown [options]="currencies" placeholder="-- Selecione --" [(ngModel)]="filter.currencyCode" name="currencyCode" id="currencyCode" class="w-full text-base text-color surface-overlay p-0 border-round outline-none focus:border-primary" style="appearance: auto"></p-dropdown>
-          </div>
-          <div class="field col-12 md:col-3">
-              <label for="afterDate">From Document Date</label>
-              <p-calendar [(ngModel)]="filter.afterDate" [showIcon]="true" inputId="afterDate" class="text-base text-color surface-overlay p-0 border-round appearance-none outline-none focus:border-primary w-full"></p-calendar>
-          </div>
-          <div class="field col-12 md:col-3">
-            <label for="beforeDate">To Document Date</label>
-            <p-calendar [(ngModel)]="filter.beforeDate" [showIcon]="true" inputId="beforeDate" class="text-base text-color surface-overlay p-0 border-round appearance-none outline-none focus:border-primary w-full"></p-calendar>
-          </div>
-        
-          <div class="field col-12 md:col-10">
-          </div>
-          <div class="field col-12 md:col-1">
-            <button pButton label="Search" type="submit" class="p-button-sm custom-bt bg-green-500"></button>
-          </div>
-          <div class="field col-12 md:col-1">
-            <button pButton label="Clean" type="button" class="p-button-sm custom-bt bg-orange-500"(click)="clearForm(formData)"></button>
-          </div>
-      </div>
+      <form #formData="ngForm" name="formDocumentQuotation" (ngSubmit)="search(filter)">
+        <h4>Shearch Criterias</h4>
+        <div class="formgrid grid">
+            <div class="field col-12 md:col-3">
+                <label for="documentNumber">Document Number</label>
+                <input pInputText type="text" id="documentNumber" name="documentNumber" [(ngModel)]="filter.documentNumber" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            </div>
+            <div class="field col-12 md:col-3">
+                <label for="currencyCode">Currency</label>
+                <p-dropdown [options]="currencies" placeholder="-- Selecione --" [(ngModel)]="filter.currencyCode" name="currencyCode" id="currencyCode" class="w-full text-base text-color surface-overlay p-0 border-round outline-none focus:border-primary" style="appearance: auto"></p-dropdown>
+            </div>
+            <div class="field col-12 md:col-3">
+                <label for="afterDate">From Document Date</label>
+                <p-calendar [(ngModel)]="filter.afterDate" name="afterDate" [showIcon]="true" inputId="afterDate" dateFormat="yy-mm-dd" class="text-base text-color surface-overlay p-0 border-round appearance-none outline-none focus:border-primary w-full"></p-calendar>
+            </div>
+            <div class="field col-12 md:col-3">
+              <label for="beforeDate">To Document Date</label>
+              <p-calendar [(ngModel)]="filter.beforeDate" name="beforeDate" [showIcon]="true" inputId="beforeDate" dateFormat="yy-mm-dd" class="text-base text-color surface-overlay p-0 border-round appearance-none outline-none focus:border-primary w-full"></p-calendar>
+            </div>
+          
+            <div class="field col-12 md:col-10">
+            </div>
+            <div class="field col-12 md:col-1">
+              <button pButton label="Search" type="submit" class="p-button-sm custom-bt bg-green-500"></button>
+            </div>
+            <div class="field col-12 md:col-1">
+              <button pButton label="Clean" type="button" class="p-button-sm custom-bt bg-orange-500"(click)="clearForm(formData)"></button>
+            </div>
+        </div>
+      </form>
     </div>
-    <div class="col border-1 border-solid surface-border border-round">
+    <div class="container border-1 border-solid surface-border border-round">
       <h4>Self Evaluation Resuts</h4>
       <p-table responsiveLayout="stack" [paginator]="true" [rows]="5" [value]="documentsQuotations">
         <ng-template pTemplate="header">
@@ -59,7 +60,6 @@
           </tr>
         </ng-template>
       </p-table>
-    </div>
-  </form>
+    </div>  
 </div>
 

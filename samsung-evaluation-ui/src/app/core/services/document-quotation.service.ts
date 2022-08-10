@@ -38,16 +38,16 @@ export class DocumentQuotationService {
     }
     if (this.isValidParmeter(filter.afterDate)) {
       if(this.isValidParmeter(queryString)){
-        queryString =  queryString + "&afterDate=" + filter.afterDate;
+        queryString =  queryString + "&afterDate=" + filter.afterDate?.toISOString();
       }else{
-        queryString = queryString + "afterDate=" + filter.afterDate;      
+        queryString = queryString + "afterDate=" + filter.afterDate?.toISOString();      
       }
     }
     if (this.isValidParmeter(filter.beforeDate)) {
       if(this.isValidParmeter(queryString)){
-        queryString =  queryString + "&beforeDate=" + filter.beforeDate;
+        queryString =  queryString + "&beforeDate=" + filter.beforeDate?.toISOString();
       }else{
-        queryString = queryString + "beforeDate=" + filter.beforeDate;      
+        queryString = queryString + "beforeDate=" + filter.beforeDate?.toISOString();      
       }
     }
     if (this.isValidParmeter(filter.currencyCode)) {

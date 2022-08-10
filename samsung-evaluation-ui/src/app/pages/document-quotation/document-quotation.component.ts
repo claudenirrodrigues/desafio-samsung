@@ -33,7 +33,6 @@ export class DocumentQuotationComponent implements OnInit {
     this.documentQuotationService.search(filter).subscribe(data => {
       if (JSON.stringify(data) != 'null' && JSON.stringify(data) != '{}' && JSON.stringify(data) != '[]' && typeof JSON.stringify(data) != 'undefined') {
           this.documentsQuotations = data;
-          console.log(this.documentsQuotations);
       }
     });
   }
@@ -42,7 +41,6 @@ export class DocumentQuotationComponent implements OnInit {
     this.currencyService.findAll().subscribe((data: Currency[]) => {
       if (JSON.stringify(data) != 'null' && JSON.stringify(data) != '{}' && JSON.stringify(data) != '[]' && typeof JSON.stringify(data) != 'undefined') {
           this.currencies = data.map( (c: Currency) => ({label: c.currencyDesc, value: c.currencyCode}) )
-          console.log(this.currencies);
       }
     });
 
@@ -50,6 +48,7 @@ export class DocumentQuotationComponent implements OnInit {
 
   clearForm(form: NgForm) {
     form.resetForm();
+    this.documentsQuotations.splice(0);
   }
 
 }
